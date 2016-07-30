@@ -106,18 +106,42 @@ angular.module('modulator2App')
 
     };
 
-    // $scope.ifActive = function(note){
-    //     // Keeps everything in range 1-12
-    //     $scope.relativeNote = 0;
-    //     if (note <= 12){
-    //         $scope.relativeNote = note;
-    //     }
-    //     else if (note > 24){
-    //         $scope.relativeNote = note - 24;
-    //     }
-    //     else {
-    //         $scope.relativeNote = note - 12;
-    //     }
-    // };
+    $scope.ifActive = function(note){
+        // create array to hold classes
+        var noteClasses = [];
+
+        // relativeNote of each fret, in range 1-12
+        var relativeNote = {};
+        if (note <= 12){
+            relativeNote = note;
+        }
+        else if (note > 24){
+            relativeNote = note - 24;
+        }
+        else {
+            relativeNote = note - 12;
+        }
+
+        // var scalePos = $scope.computedScales[0].indexOf(relativeNote);
+
+        // check if relativeNote is in each scale, return appropriate class and append to noteClasses array
+        angular.forEach($scope.computedScales, function(tempScale, i){
+            var noteClass = '';
+            var scalePos = tempScale.indexOf(relativeNote);
+            if (scalePos === -1){
+                noteClass = '';
+            }
+            else if(scalePos === 0){
+                noteClass = 'root-'+i;
+            }
+            else {
+                noteClass = 'scale-'+i;
+            }
+
+            noteClasses.push(noteClass);
+        });
+
+        return noteClasses;
+    };
 
   }]);
