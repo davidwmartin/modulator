@@ -2,7 +2,7 @@
 	%p Choose two keys, and see them represented below. Root note is square.
 .controls
 	%form.form
-		-(1..1).each do |i|
+		-(1..2).each do |i|
 			%fieldset{class:"key-#{i}"}
 				%h3 Key #{i}:
 				
@@ -14,7 +14,7 @@
 				%select.scale{ng_model:"selScale#{i}.id"}
 					%option{ng_repeat:"scale in scales", ng_value:"{{$index}}"} {{scale.name}}
 
-		%button{:ng_click => "updateScales([selScale1]);"} Update
+		%button{:ng_click => "updateScales([selScale1, selScale2]);"} Update
 
 	/ %pre
 	/ 	activeScales = {{activeScales | json}}

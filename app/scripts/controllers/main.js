@@ -24,6 +24,7 @@ angular.module('modulator2App')
 		'G',
     ];
 
+    // Define scales by an array - integers represent intervals (1 for half step, 2 for whole step)
     $scope.scales = [
     	{
     		name:'Major',
@@ -43,14 +44,14 @@ angular.module('modulator2App')
     	}
     ];
 
-    // goes top -> bottom strings
+    // goes top -> bottom strings, offset counts from 0 (G#/Ab) to 11 (G)
     $scope.tuningOffsets = {
-    	1:9,
-    	2:4, 
-    	3:12,
-    	4:7,
-    	5:2,
-    	6:9
+    	1:8,
+    	2:3, 
+    	3:11,
+    	4:6,
+    	5:1,
+    	6:8
     };
 
     $scope.selectedScales = {};
@@ -68,41 +69,40 @@ angular.module('modulator2App')
 
     //
     $scope.buildNotes = function(selectedScales){
-        //Start should be root note of scale, 0 for testing
-        $scope.start = 0;
-        $scope.playableNotes = [];
 
-        angular.forEach(selectedScales, function(currentScale){
-            // Gets proper scale from above $scope.scales by referencing the id
+        // Object to hold arrays of playable notes
+        $scope.computedScales = {};
+
+        // Iterate over passed in scales
+        angular.forEach(selectedScales, function(currentScale, i){
+            // Gets proper scale from above $scope.scales by referencing the id, sets notes on current scale by getting notes from reference scale
             var currentScaleRef = $scope.scales[currentScale.id];
-
             currentScale.notes = currentScaleRef.notes;
 
-            console.log(currentScale.notes);
-
-            //Start should be root note of scale, 0 for testing
-            $scope.start = 0;
-            $scope.playableNotes = [];
+            // Create array to hold playable notes, first entry is currentScale's root note
+            var playableNotes = [];
+            var start = parseInt(currentScale.root);
+            playableNotes.push(start);
+            
 
             angular.forEach(currentScale.notes, function(note){
                 // Iterate through notes in selected scale
-                // console.log('note: ' + note);
-
-                $scope.entry = $scope.start + note;
-
-                if($scope.entry > 12){
-                    $scope.entry = $scope.entry - 12;
+                var entry = start + note;
+                // Keep everything in the range 1-12
+                if(entry > 12){
+                    entry = entry - 12;
                 }
-                $scope.playableNotes.push($scope.entry);
-
-                $scope.start = $scope.entry;
+                //Push note, reset start
+                playableNotes.push(entry);
+                start = entry;
 
             });
-
-            console.log($scope.playableNotes);
-
+            // Assign playable notes to indexed spot in computedScales
+            $scope.computedScales[i] = playableNotes;
 
         });
+
+        console.log($scope.computedScales);
 
     };
 
