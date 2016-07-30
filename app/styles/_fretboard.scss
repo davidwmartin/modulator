@@ -1,0 +1,109 @@
+.fretboard{
+  border-collapse:collapse;
+  width:100%;
+  border:1px solid $fretboard-border-col;
+  position:relative;
+  tr{
+    width:100%;
+    height:25px;
+    position:relative;
+    &::after{
+      position:absolute;
+      content: " ";
+      margin:10px 0 0; 
+      left:0;right:0;
+      border-bottom:3px solid $string-col;
+    }
+
+    // Fret position markers below bottom string
+    &:nth-child(6){
+      td{
+        &:nth-child(4),&:nth-child(6),&:nth-child(8),&:nth-child(10),&:nth-child(16),&:nth-child(18),&:nth-child(20),&:nth-child(22){
+          &::before{
+            position:absolute;
+            content: "•";
+            width:10px;
+            height:10px;
+            top:25px;  left:50%;
+            margin-left:-2px;
+          }
+        }
+        &:nth-child(13)::before,&:nth-child(25)::before{
+            position:absolute;
+            content: "• •";
+            width:10px;
+            height:10px;
+            top:25px;  left:50%;
+            margin-left:-2px;
+          }
+      }
+    }
+  }
+  td{
+    position:relative;
+    height:20px;
+    z-index:20;
+    border-right:1px solid gray;
+    &:nth-child(1){
+      background-color:$nut-col;
+    } 
+    &::after{
+      position:absolute;
+      content: " ";
+      margin:-8px 0  0 -5px;
+      left:50%;
+      width:15px; height:15px;
+      border-radius:8px;
+    }
+    &.scale-0::after{
+      background-color: $key-1-col;
+    }
+    &.scale-1::after{
+      background-color:$key-2-col;
+    }
+    &.scale-0.scale-1::after{ 
+      @include both;
+    }
+
+    &[class*="root-"]::after{
+      border-radius:0px;
+      border:4px solid grey;
+      background:none;
+      margin:-12px 0 0 -9px;
+    }
+    &.root-0::after{
+      border-color:$key-1-col;
+    }
+    &.scale-0.scale-1.root-0::after{
+      content:"•";
+      color:$key-2-col;
+      font-size: 40px;
+      line-height:0.55;
+    }
+    &.scale-0.scale-1.root-1::after{
+      content:"•";
+      color:$key-1-col;
+      font-size: 40px;
+      line-height:0.55;
+    }
+    &.scale-0.scale-1.root-0.root-1::after{
+      content: "";
+    }
+    &.root-1::after{
+      border-color:$key-2-col;
+    }
+    &.root-0.root-1::after{
+      border-radius:0px;
+      border:none;
+      margin:-8px 0  0 -5px;
+      @include both;
+    }
+  }
+}
+
+
+@media screen and (max-width:700px){
+  .fretboard{
+    // transform:rotate(90deg);
+  }
+}

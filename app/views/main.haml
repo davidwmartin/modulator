@@ -23,7 +23,7 @@
 		%tr{ng_repeat:"(str,offset) in tuningOffsets", id:"str-{{str}}", class:"{{offset}}"}
 			/ %string-builder
 			-(0..24).each do |i|
-				%td{class:"{{offset + #{i}}}", ng_class:"ifActive(offset + #{i})"}
+				%td{class:"{{offset + #{i}}}", ng_class:"ifActive(offset + #{i})"} 
 
 
 %footer

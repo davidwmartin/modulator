@@ -55,14 +55,10 @@ angular.module('modulator2App')
     };
 
     $scope.selectedScales = {};
-    // $scope.frettedNotes = {};
 
     // Fires when you hit "update"
     $scope.updateScales = function(selScales){
     	$scope.selectedScales = angular.copy(selScales);
-        
-        // console.log(selScales.notes);
-        // console.log($scope.selectedScales);
     	
         $scope.buildNotes($scope.selectedScales);
     };
@@ -131,9 +127,9 @@ angular.module('modulator2App')
             if (scalePos === -1){
                 noteClass = '';
             }
-            else if(scalePos === 0){
-                noteClass = 'root-'+i;
-            }
+            // else if(scalePos === 0){
+            //     noteClass = 'root-'+i+' scale-'+i;
+            // }
             else {
                 noteClass = 'scale-'+i;
             }

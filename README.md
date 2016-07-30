@@ -1,7 +1,8 @@
-# modulator2
+# Guitar Modulatron 3000
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+Simple Web App for practicing modulations on a guitar.
+
+WORK IN PROGRESS -- NOT CURRENTLY FUNCTIONAL
 
 ## Build & development
 
@@ -16,3 +17,9 @@ Running `grunt test` will run the unit tests with karma.
 ## TODO
 
 - Make sure I'm consistent with note number values (i.e. 1-12 or 0-11) -- string offsets, root values, start for playableNotes
+
+
+---------------------------------
+
+This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
+version 0.15.1.
