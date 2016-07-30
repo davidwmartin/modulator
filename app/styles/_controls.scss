@@ -1,0 +1,29 @@
+
+.controls{
+  h3{
+    display:inline;
+    margin-right:1em;
+    &::after{
+      border-radius:15px;
+      content:" ";
+      display:inline-block;
+      margin:.2em 0 0 .5em;
+      width:15px; height:15px;
+    }
+  }
+  button{
+    // width:250px;
+    // height:100px !important;
+    // display:block;
+    margin:1em 0;
+  }
+}
+
+.controls 
+
+.key-1 h3::after{
+  background-color: $key-1-col;
+}
+.key-2 h3::after{
+  background-color: $key-2-col;
+}

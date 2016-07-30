@@ -1,0 +1,32 @@
+.legend
+	%p Choose two keys, and see them represented below. Root note is square.
+.controls
+	%form.form
+		-(1..1).each do |i|
+			%fieldset{class:"key-#{i}"}
+				%h3 Key #{i}:
+				
+				%label Root:
+				%select.root-select{ng_model:"selScale#{i}.root"}
+					%option{ng_repeat:"root in rootVals", ng_value:"{{$index}}"} {{root}}
+
+				%label Scale Type:
+				%select.scale{ng_model:"selScale#{i}.id"}
+					%option{ng_repeat:"scale in scales", ng_value:"{{$index}}"} {{scale.name}}
+
+		%button{:ng_click => "updateScales([selScale1]);"} Update
+
+	/ %pre
+	/ 	activeScales = {{activeScales | json}}
+.output
+	%table.fretboard
+		%tr{ng_repeat:"(str,offset) in tuningOffsets", id:"str-{{str}}", class:"{{offset}}"}
+			/ %string-builder
+			-(0..24).each do |i|
+				%td{class:"{{offset + #{i}}}"}
+
+
+%footer
+	%p.copyright.root-fret-1.root2 &copy; 2015 David Martin. All rights reserved.
+
+	

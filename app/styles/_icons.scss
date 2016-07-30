@@ -1,0 +1,60 @@
+
+// Key 1
+.k1::after{
+	background-color: $key-1-col;
+}
+
+// Key 2
+.k2::after{
+	background-color: $key-2-col;
+}
+
+// Key 1 & 2
+.k12::after{
+	@include both;
+}
+
+// Key 1 Root 1
+.k1.r1::after{
+	background-color: $key-1-col;
+}
+
+// Key 2 Root 2
+.k2.r2::after{
+	background-color: $key-2-col;
+}
+
+// Key 1 & 2, Root 1
+.k12.r1::after{
+	border-color: $key-1-col;
+	color:$key-2-col;
+}
+
+// Key 1 & 2, Root 2 
+.k12.r2::after{
+	border-color: $key-2-col;
+	color:$key-1-col;
+}
+
+// Key 1 & 2, Root 1 & 2
+.k12.r1.r2::after{
+	@include both;
+}
+
+
+// Shared styles
+
+.k1::after, .k2::after, .k12::after{
+	border-radius: 8px;
+}
+
+.k1.r1::after, .k2.r2::after, .k12.r1::after, .k12.r2::after, .k12.r1.r2::after{
+	border-radius: 0 ;
+}
+
+.k12.r1::after, .k12.r2::after{
+	background:none;
+	content:"•";
+	font-size:40px;
+	line-height:0.55;
+}

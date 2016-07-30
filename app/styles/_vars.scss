@@ -1,0 +1,26 @@
+$key-1-col: #426CD7 ;
+$key-2-col: #651530 ;
+
+$nut-col: silver;
+$string-col: grey;
+$fretboard-border-col: brown;
+
+@mixin both {
+  background: $key-1-col; /* Old browsers */
+  background: -moz-linear-gradient(left,  $key-1-col 0%, $key-1-col 50%, $key-2-col 51%, $key-2-col 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,$key-1-col), color-stop(50%,$key-1-col), color-stop(51%,$key-2-col), color-stop(100%,$key-2-col)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  $key-1-col 0%,$key-1-col 50%,$key-2-col 51%,$key-2-col 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  $key-1-col 0%,$key-1-col 50%,$key-2-col 51%,$key-2-col 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  $key-1-col 0%,$key-1-col 50%,$key-2-col 51%,$key-2-col 100%); /* IE10+ */
+  background: linear-gradient(to right,  $key-1-col 0%,$key-1-col 50%,$key-2-col 51%,$key-2-col 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+}
+
+// @mixin both-root{
+//   -moz-border-image: -moz-linear-gradient(left,  $key-1-col 0%, $key-1-col 50%, $key-2-col 51%, $key-2-col 100%); /* FF3.6+ */
+//   -webkit-border-image: -webkit-gradient(linear, left top, right top, color-stop(0%,$key-1-col), color-stop(50%,$key-1-col), color-stop(51%,$key-2-col), color-stop(100%,$key-2-col)); /* Chrome,Safari4+ */
+//   -webkit-border-image: -webkit-linear-gradient(left,  $key-1-col 0%,$key-1-col 50%,$key-2-col 51%,$key-2-col 100%); /* Chrome10+,Safari5.1+ */
+//   -o-border-image: -o-linear-gradient(left,  $key-1-col 0%,$key-1-col 50%,$key-2-col 51%,$key-2-col 100%); /* Opera 11.10+ */
+//   -ms-border-image: -ms-linear-gradient(left,  $key-1-col 0%,$key-1-col 50%,$key-2-col 51%,$key-2-col 100%); /* IE10+ */
+//   border-image: linear-gradient(to right,  $key-1-col 0%,$key-1-col 50%,$key-2-col 51%,$key-2-col 100%); /* W3C */
+// }
