@@ -127,9 +127,9 @@ angular.module('modulator2App')
             if (scalePos === -1){
                 noteClass = '';
             }
-            // else if(scalePos === 0){
-            //     noteClass = 'root-'+i+' scale-'+i;
-            // }
+            else if(scalePos === 0){
+                noteClass = 'root-'+i+' scale-'+i;
+            }
             else {
                 noteClass = 'scale-'+i;
             }
