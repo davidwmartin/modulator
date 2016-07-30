@@ -61,59 +61,50 @@ angular.module('modulator2App')
     	$scope.selectedScales = angular.copy(selScales);
         
         // console.log(selScales.notes);
-        
         // console.log($scope.selectedScales);
     	
         $scope.buildNotes($scope.selectedScales);
     };
 
     //
-    $scope.buildNotes = function(scales){
+    $scope.buildNotes = function(selectedScales){
         //Start should be root note of scale, 0 for testing
         $scope.start = 0;
         $scope.playableNotes = [];
 
-        // console.log(scales[0].notes);
+        angular.forEach(selectedScales, function(currentScale){
+            // Gets proper scale from above $scope.scales by referencing the id
+            var currentScaleRef = $scope.scales[currentScale.id];
 
-        angular.forEach(scales[0].notes,function(note){
+            currentScale.notes = currentScaleRef.notes;
 
-            console.log("note: " + note);
+            console.log(currentScale.notes);
 
-            // $scope.entry = $scope.start + note;
+            //Start should be root note of scale, 0 for testing
+            $scope.start = 0;
+            $scope.playableNotes = [];
 
-            // if($scope.entry > 12){
-            //     $scope.entry = $scope.entry - 12;
-            // }
-            // $scope.playableNotes.push($scope.entry);
+            angular.forEach(currentScale.notes, function(note){
+                // Iterate through notes in selected scale
+                // console.log('note: ' + note);
 
-            // $scope.start = $scope.entry;
-            
+                $scope.entry = $scope.start + note;
+
+                if($scope.entry > 12){
+                    $scope.entry = $scope.entry - 12;
+                }
+                $scope.playableNotes.push($scope.entry);
+
+                $scope.start = $scope.entry;
+
+            });
+
+            console.log($scope.playableNotes);
+
+
         });
-        console.log($scope.playableNotes);
+
     };
-
-    // $scope.buildNotes = function(scales){
-    //     //Start should be root note of scale, 0 for testing
-    //     $scope.start = 0;
-    //     $scope.playableNotes = [];
-
-    //     angular.forEach(scales,function(scale){
-    //         // console.log(scale.notes);
-    //         angular.forEach(scale.notes,function(note){
-
-    //             $scope.entry = $scope.start + note;
-
-    //             if($scope.entry > 12){
-    //                 $scope.entry = $scope.entry - 12;
-    //             }
-    //             $scope.playableNotes.push($scope.entry);
-
-    //             $scope.start = $scope.entry;
-            
-    //         });
-    //         console.log($scope.playableNotes);
-    //     });
-    // };
 
     // $scope.ifActive = function(note){
     //     // Keeps everything in range 1-12
