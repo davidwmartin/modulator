@@ -2,7 +2,7 @@
 
 Simple Web App for practicing modulations on a guitar.
 
-WORK IN PROGRESS -- NOT CURRENTLY FUNCTIONAL
+Work in progress, still buggy. 
 
 ## Build & development
 
@@ -16,8 +16,19 @@ Running `grunt test` will run the unit tests with karma.
 
 ## TODO
 
+### Cleanup
+
 - Make sure I'm consistent with note number values (i.e. 1-12 or 0-11) -- string offsets, root values, start for playableNotes
 
+- Some style weirdness when note is root of one and in other scale but not it's root
+
+- Can use only the top scale selector, but not only the bottom one
+
+### Features
+
+- indefinite number of strings, w/ ability to add / remove and set tuning for each
+
+- responsive
 
 ---------------------------------
 
